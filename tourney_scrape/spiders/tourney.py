@@ -8,7 +8,7 @@ class TourneySpider(scrapy.Spider):
     name = "tourney"
     allowed_domains = "databasesports.com"
     start_urls = []
-    for i in range(1975,1993,1):
+    for i in range(1975,2014,1):
         start_urls.append('http://www.databasesports.com/ncaab/tourney.htm?yr=%d' % i)
 
     def chunks(self,l, n):
