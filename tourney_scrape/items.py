@@ -17,3 +17,15 @@ class myDatabase(scrapy.Item):
     year=scrapy.Field()
     team1score=scrapy.Field()
     team2score=scrapy.Field()
+
+class mycbstable(scrapy.Item):
+    year=scrapy.Field()
+    table=scrapy.Field()
+    row=scrapy.Field()
+    cols=scrapy.Field()
+    name=scrapy.Field()
+
+
+class Cbstablecols(scrapy.Item):
+    rows=scrapy.Field()
+    year=scrapy.Field()
