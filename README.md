@@ -99,3 +99,6 @@ NOTES:
 
 Working this scraper out was a pain in the ass b/c this is a screen-scrape and the entries are presented as html-tabularized brackets. The guts of the process are in `tourney_scrape/spiders/tourney.py`
 
+Espn spider is called espn. 
+The spider for cbs is called score. 
+the spider score_name is for getting the names of the columns in the cbs data -- don't use this directly -- it's inefficient. 
