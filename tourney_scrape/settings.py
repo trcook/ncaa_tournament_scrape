@@ -12,6 +12,6 @@ BOT_NAME = 'tourney_scrape'
 
 SPIDER_MODULES = ['tourney_scrape.spiders']
 NEWSPIDER_MODULE = 'tourney_scrape.spiders'
-ITEM_PIPELINES=['tourney_scrape.pipelines.TourneyScrapePipeline']
+ITEM_PIPELINES=['tourney_scrape.pipelines.EspnPipeline','tourney_scrape.pipelines.ScorePipeline']
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wto_scrape (+http://www.yourdomain.com)'

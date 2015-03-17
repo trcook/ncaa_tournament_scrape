@@ -29,3 +29,9 @@ class mycbstable(scrapy.Item):
 class Cbstablecols(scrapy.Item):
     rows=scrapy.Field()
     year=scrapy.Field()
+
+
+class ESPNcols(scrapy.Item):
+    rank=scrapy.Field()
+    rows=scrapy.Field()
+    

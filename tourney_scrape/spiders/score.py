@@ -9,7 +9,7 @@ class ScoreSpider(scrapy.Spider):
     name = "score"
     allowed_domains = "databasesports.com"
     start_urls = []
-    for i in range(2003,2010,1):
+    for i in range(2003,2015,1):
         start_urls.append('http://www.cbssports.com/collegebasketball/bracketology/sos/%(start)d-%(end)d' % {"start":i,"end":i+1})
         print(start_urls)
 
@@ -19,15 +19,12 @@ class ScoreSpider(scrapy.Spider):
 
     def parse(self, response):
         # yeild yr
-        year =response.request.url[-9::]
-        cols=Cbstablecols()
-        cols['year']=year
-        cols['rows']=response.xpath("//table[@class='data']//tr[position() < 4]").extract()
-        for i in response.xpath("//table[@class='data']//tr[position()>3]"):
+        year =response.request.url[-4::]
+        for i in response.xpath("//ul[@class='content']/li[position()=1]/table[@class='data']//tr[position()>3]"):
             scrapy_record=mycbstable()
             scrapy_record['year']=year
             scrapy_record['name']=i.xpath("./td/a/text()").extract()
-            tab_row=[year]
+            tab_row=[[year]]
             for j in i.xpath(".//td"):
                 tab_row.append(j.xpath("./text()").extract())
             scrapy_record['row']=tab_row
@@ -39,7 +36,7 @@ class ScorenamesSpider(scrapy.Spider):
     name = "score_names"
     allowed_domains = "databasesports.com"
     start_urls = []
-    for i in range(2003,2010,1):
+    for i in range(2010,2012,1):
         start_urls.append('http://www.cbssports.com/collegebasketball/bracketology/sos/%(start)d-%(end)d' % {"start":i,"end":i+1})
         print(start_urls)
 
@@ -49,10 +46,10 @@ class ScorenamesSpider(scrapy.Spider):
 
     def parse(self, response):
         # yeild yr
-        year =response.request.url[-9::]
+        year =response.request.url[-4::]
         cols=Cbstablecols()
         cols['year']=year
-        cols['rows']=response.xpath("//table[@class='data']//tr[position() < 4]").extract()
+        cols['rows']=response.xpath("//table[@class='data']//tr[position() < 4]//text()").extract()
         yield cols
 
         # for i in response.xpath("//tr[@class='region']/ancestor::table|//td[@class='region']/ancestor::table"):
